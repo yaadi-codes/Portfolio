@@ -18,7 +18,7 @@ const HomePage = () => {
             rel="noopener noreferrer"
           >
             <img
-              src="../../../public/githubPfp.png"
+              src="/githubPfp.png"
               alt="Profile Picture"
               id="profile-pic"
               title="Click to visit my GitHub Account 👨‍💻."
