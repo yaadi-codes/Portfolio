@@ -1,0 +1,16 @@
+#scroll-cue {
+    position: fixed;
+    bottom: 20px;
+    right: 50%;
+    font-size: 2rem;
+    color: var(--moonglare-yellow);
+    animation: bounce 2s infinite ease-in-out;
+    z-index: 2;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#scroll-cue.hide {
+  opacity: 0;
+  pointer-events: none;
+}

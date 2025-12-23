@@ -1,0 +1,28 @@
+#home{
+    position: relative;
+    display: inline-block;
+    top: 66px;
+    background-image: linear-gradient(167deg, var(--jet-black) 0%, var(--darker-royal-blue) 100%);
+}
+
+#profile-pic{
+    opacity: 0.95;
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 9%;
+    box-shadow: 5px 0 30px var(--moonglare-yellow);
+    max-width: 350px;
+    width: 35%;
+    border-radius: 50%;
+    animation: fadeIn 2s ease-in-out;
+    transition: transform 0.3s ease, opacity 0.4s ease-in-out;
+    z-index: 2;
+}
+#profile-pic:hover{
+    opacity: 1;
+    box-shadow: 10px 0 50px var(--moonglare-yellow);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
