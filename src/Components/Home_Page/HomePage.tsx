@@ -3,7 +3,7 @@ import ScrollCue from "../ScrollCue";
 import Star from "../Star";
 import "../../Styles/homePage.css";
 import HomeText from "./HomeText";
-import githubPfp from "../../Assets/github-pfp.png";
+import githubPfp from "../../assets/githubPfp.png";
 
 const HomePage = () => {
   return (
