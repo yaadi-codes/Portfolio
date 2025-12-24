@@ -3,7 +3,7 @@ import ScrollCue from "../ScrollCue";
 import Star from "../Star";
 import "../../Styles/homePage.css";
 import HomeText from "./HomeText";
-import githubPfp from "/public/githubPfp.png";
+import githubPfp from "../../assets/githubPfp.png";
 
 const HomePage = () => {
   return (
@@ -19,7 +19,7 @@ const HomePage = () => {
             rel="noopener noreferrer"
           >
             <img
-              src={githubPfp || ""}
+              src={githubPfp}
               alt="Profile Picture"
               id="profile-pic"
               title="Click to visit my GitHub Account 👨‍💻."
