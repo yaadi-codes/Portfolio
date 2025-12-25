@@ -1,15 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-export type UseTypeWriterOptions = {
-  typingSpeed?: number; // ms per char
-  deletingSpeed?: number; // ms per char
-  pauseAtComma?: number; // ms
-  pauseAtPeriod?: number; // ms
-  initialDelay?: number; // ms before starting
-  loop?: boolean;
-  startOnMount?: boolean;
-  startWhenVisible?: boolean;
-};
+import type { UseTypeWriterOptions } from "../types";
 
 export default function useTypeWriter(
   sentences: string[],
@@ -18,8 +8,8 @@ export default function useTypeWriter(
   const {
     typingSpeed = 100,
     deletingSpeed = 30,
-    pauseAtComma = 1000,
-    pauseAtPeriod = 1500,
+    pauseAtComma = 700,
+    pauseAtPeriod = 1000,
     initialDelay = 3000,
     loop = true,
     startOnMount = true,
@@ -38,8 +28,7 @@ export default function useTypeWriter(
     typeof window !== "undefined" &&
     (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
 
-  // Serializable key used in the effect dependency array (avoids complex expression in deps)
-  const sentencesKey = Array.isArray(sentences) ? sentences.join("|||") : String(sentences);
+  const sentencesKey = sentences.join("|||");
 
   useEffect(() => {
     if (!sentences || sentences.length === 0) return;

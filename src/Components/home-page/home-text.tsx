@@ -1,5 +1,5 @@
-import "../../Styles/homeText.css";
-import useTypeWriter from "../../hooks/useTypeWriter";
+import "./home-text.css";
+import useTypeWriter from "../../hooks/use-type-writer";
 
 /*
  * This script creates a typewriter effect for the sentences in the portfolio.
@@ -10,8 +10,7 @@ import useTypeWriter from "../../hooks/useTypeWriter";
  * The text is displayed in an HTML element with the ID 'typed-text'.
  * The typing speed and pause durations can be adjusted as needed.
  */
-// Sentences to display with the typewriter effect. Keep these local so they can
-// be customized for this component and passed into the hook.
+
 const sentences: string[] = [
   "Hi, I’m Malique Edwards — a Junior Full-Stack Web Developer.",
   "I love crafting modern, responsive web experiences with clean, effective design.",

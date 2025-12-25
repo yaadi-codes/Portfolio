@@ -1,0 +1,4 @@
+Replace module-level DOM access — Edit FallingStar.tsx to remove document.querySelector('.falling-stars') and top-level setInterval.
+Add container ref — Render <div ref={containerRef} className="falling-stars" aria-hidden="true" /> and declare const containerRef = useRef<HTMLDivElement | null>(null).
+Move generator into useEffect — In useEffect(() => { ... }, []) define createStar() (use containerRef.current), start the interval const id = window.setInterval(createStar, 250), and return () => clearInterval(id) to clean up.
+Track & clear per-star timeouts — Use a useRef list of timeout IDs (or mark nodes) so the cleanup can clear timeouts and remove remaining stars on unmount.

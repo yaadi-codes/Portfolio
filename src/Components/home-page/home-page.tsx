@@ -1,14 +1,12 @@
-import Header from "../Header";
-import ScrollCue from "../ScrollCue";
-import Star from "../Star";
-import "../../Styles/homePage.css";
-import HomeText from "./HomeText";
+import Header from "../header";
+import Star from "../falling-star";
+import "./home-page.css";
+import HomeText from "./home-text";
 
 const HomePage = () => {
   return (
     <div>
       <Header />
-      <ScrollCue />
       <section id="home">
         <Star />
         <div id="home-content">
@@ -18,7 +16,7 @@ const HomePage = () => {
             rel="noopener noreferrer"
           >
             <img
-              src="/githubPfp.png"
+              src="/assets/images/github-pfp.png"
               alt="Profile Picture"
               id="profile-pic"
               title="Click to visit my GitHub Account 👨‍💻."
