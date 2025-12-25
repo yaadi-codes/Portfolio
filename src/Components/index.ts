@@ -1,4 +1,3 @@
-export { default as Header } from '';
 export { default as FallingStar } from '../falling-star';
 export { default as HomePage } from './home-page/home-page';
 export { default as HomeText } from './home-page/home-text';
