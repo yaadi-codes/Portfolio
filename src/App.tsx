@@ -1,9 +1,15 @@
 import HomePage from "./components/home-page/home-page";
+import Header from "./Header";
 
 import "./app.css";
 
 const App = () => {
-  return <HomePage />;
+  return (
+    <>
+      <Header />
+      <HomePage />;
+    </>
+  );
 };
 
 export default App;

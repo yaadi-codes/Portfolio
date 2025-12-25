@@ -1,12 +1,10 @@
-import Header from "../header";
-import Star from "../falling-star";
+import Star from "../../falling-star";
 import "./home-page.css";
 import HomeText from "./home-text";
 
 const HomePage = () => {
   return (
     <div>
-      <Header />
       <section id="home">
         <Star />
         <div id="home-content">
