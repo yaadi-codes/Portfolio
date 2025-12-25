@@ -1,4 +1,4 @@
-import "./components/falling-star.css";
+import "./falling-star.css";
 
 const starsContainer = document.querySelector(".falling-stars")!;
 function createStar(): void {

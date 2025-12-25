@@ -1,4 +1,4 @@
-import Star from "../../falling-star";
+import Star from "../falling-star";
 import "./home-page.css";
 import HomeText from "./home-text";
 
