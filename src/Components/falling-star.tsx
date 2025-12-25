@@ -14,8 +14,15 @@ const Star = () => {
       star.style.left = `${Math.random() * 100}%`;
       star.style.animationDuration = `${15 + Math.random() * 50}s`;
 
+      const width = 4 + Math.random() * 6; // 4px - 10px
+      const height = 10 + Math.random() * 10; // 10px - 20px
+
       star.innerHTML = `
-        <svg viewBox="0 0 10 16" xmlns="http://www.w3.org/2000/svg">
+        <svg 
+          viewBox="0 0 10 16" 
+          xmlns="http://www.w3.org/2000/svg"
+          style="width: ${width}px; height: ${height}px;"
+        >
           <polygon 
             points="5,0 5.8,5 9,8 5.8,11 5,16 4.2,11 1,8 4.2,5"
             fill="#EEE8AA" 
