@@ -22,7 +22,7 @@
 .star svg {
     display: inline-block;
     z-index: 1;
-    width: 8px;
-    height: 16px;
+    z-index: 1;
+    /* width and height are now set dynamically in JS */
     animation: twinkle 1.5s infinite ease-in-out;
 }
