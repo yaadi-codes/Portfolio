@@ -7,19 +7,19 @@ const App = () => {
     <>
       <Header />
       <main>
-        <ScrollView id="home" height="100vh">
+        <ScrollView id="home">
           <HomePage />
         </ScrollView>
 
-        <ScrollView id="about" height="100vh">
+        <ScrollView id="about">
           <AboutPage />
         </ScrollView>
 
-        <ScrollView id="projects" height="100vh">
+        <ScrollView id="projects">
           <ProjectsPage />
         </ScrollView>
 
-        <ScrollView id="contact" height="100vh">
+        <ScrollView id="contact">
           <ContactPage />
         </ScrollView>
       </main>

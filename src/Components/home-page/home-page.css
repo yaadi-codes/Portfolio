@@ -1,11 +1,11 @@
-#home{
+#home {
     position: relative;
-    display: inline-block;
-    top: 66px;
+    width: 100%;
+    /* top: 66px; removed to fix gap */
     background-image: linear-gradient(167deg, var(--jet-black) 0%, var(--darker-royal-blue) 100%);
 }
 
-#profile-pic{
+#profile-pic {
     opacity: 0.95;
     float: right;
     position: absolute;
@@ -19,10 +19,10 @@
     transition: transform 0.3s ease, opacity 0.4s ease-in-out;
     z-index: 2;
 }
-#profile-pic:hover{
+
+#profile-pic:hover {
     opacity: 1;
     box-shadow: 10px 0 50px var(--moonglare-yellow);
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
-
