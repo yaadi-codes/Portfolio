@@ -1,11 +1,11 @@
-import Header from "./components-temp/header";
+import Header from "./components/header";
 import {
   HomePage,
   AboutPage,
   ProjectsPage,
   ContactPage,
   ScrollView,
-} from "./components-temp";
+} from "./components";
 import "./app.css";
 
 const App = () => {
