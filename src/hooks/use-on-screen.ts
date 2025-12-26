@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import type { RefObject } from 'react';
 
 export function useOnScreen(
-    options: IntersectionObserverInit = { threshold: 0.4 }
+    options: IntersectionObserverInit = { threshold: 0.5 }
 ): [RefObject<HTMLDivElement | null>, boolean] {
     const ref = useRef<HTMLDivElement>(null);
     const [isVisible, setIsVisible] = useState(false);
