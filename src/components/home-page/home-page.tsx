@@ -1,11 +1,9 @@
-import Star from "../falling-star";
 import "./home-page.css";
 import HomeText from "./home-text";
 
 const HomePage = () => {
   return (
     <div className="home-section">
-        <Star />
         <div id="home-content">
           <a
             href="https://github.com/yaadi-codes"

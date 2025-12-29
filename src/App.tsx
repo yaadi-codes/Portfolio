@@ -5,12 +5,14 @@ import {
   ProjectsPage,
   ContactPage,
   ScrollView,
+  FallingStar,
 } from "./components";
 import "./app.css";
 
 const App = () => {
   return (
     <>
+      <FallingStar />
       <Header />
       <main>
         <ScrollView id="home">
