@@ -1,26 +1,26 @@
-#home-text{
+#home-text {
     position: absolute;
     top: 280px;
     left: 10%;
     width: 60%;
     max-width: 700px;
-    z-index: 1;
+    z-index: 1000;
     transition: all 0.3s ease;
 }
 
-#helloWorld{
+#helloWorld {
     font-family: Roboto, sans-serif;
     font-size: 4em;
     font-weight: 800;
     letter-spacing: 5px;
-    text-shadow: 2px 2px 4px var(--light-royal-blue) ;
+    text-shadow: 2px 2px 4px var(--light-royal-blue);
     color: var(--pearl);
     margin-bottom: 30px;
     white-space: nowrap;
     animation: fadeIn 1.5s ease-in-out;
 }
 
-.wave{
+.wave {
     display: inline-block;
     font-size: 0.9em;
     position: relative;
@@ -28,13 +28,13 @@
     left: -.7em;
     transform: scaleX(-1);
     transform-origin: 60% 90%;
-    animation: wave-hand 2s ease-in-out; 
-    animation-delay: 1.7s ;
+    animation: wave-hand 2s ease-in-out;
+    animation-delay: 1.7s;
 }
 
-.wave:hover{
+.wave:hover {
     animation: wave-hand-hover 2s ease-in-out;
-     
+
 }
 
 #typed-text {
@@ -44,7 +44,7 @@
     overflow: hidden;
 }
 
-#introduction{
+#introduction {
     display: inline-block;
     font-family: Figtree, Roboto, sans-serif;
     font-size: 1.3em;
@@ -64,7 +64,7 @@
     font-size: 1.1em;
     font-weight: 500;
     color: var(--pearl);
-    
+
 }
 
 #cta a {
@@ -75,12 +75,15 @@
     margin: 0 8px;
     text-shadow: 0 0 3px rgba(238, 232, 170, 0.25)
 }
-#viewProject{
+
+#viewProject {
     animation: slideInLeft 2s ease;
 }
-#contactMe{
+
+#contactMe {
     animation: slideInRight 2s ease;
 }
+
 #cta a:hover {
     border-radius: 24px;
     background-color: var(--blur-DRB);
