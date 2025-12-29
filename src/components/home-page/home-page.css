@@ -1,4 +1,4 @@
-#home {
+.home-section {
     position: relative;
     width: 100%;
     /* top: 66px; removed to fix gap */

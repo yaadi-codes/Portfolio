@@ -4,8 +4,7 @@ import HomeText from "./home-text";
 
 const HomePage = () => {
   return (
-    <div>
-      <section id="home">
+    <div className="home-section">
         <Star />
         <div id="home-content">
           <a
@@ -22,7 +21,6 @@ const HomePage = () => {
           </a>
           <HomeText />
         </div>
-      </section>
     </div>
   );
 };

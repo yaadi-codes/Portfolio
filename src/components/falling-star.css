@@ -10,19 +10,18 @@
 }
 
 .star {
-    position: absolute;
-    top: -10px;
-    animation: fall linear forwards;
-    filter: 
-        brightness(1.4)
-        drop-shadow(0 0 4px rgba(238, 232, 170)) /* soft moon yellow */
-        drop-shadow(0 0 10px rgba(255, 234, 0, 0.4))
-        blur(0.2px);
+  position: absolute;
+  top: -10px;
+  animation: fall linear forwards;
+  filter:
+    brightness(1.4) drop-shadow(0 0 4px rgba(238, 232, 170))
+    /* soft moon yellow */
+    drop-shadow(0 0 10px rgba(255, 234, 0, 0.4)) blur(0.2px);
 }
+
 .star svg {
-    display: inline-block;
-    z-index: 1;
-    z-index: 1;
-    /* width and height are now set dynamically in JS */
-    animation: twinkle 1.5s infinite ease-in-out;
+  display: inline-block;
+  z-index: 1;
+  /* width and height are now set dynamically in JS */
+  animation: twinkle 1.5s infinite ease-in-out;
 }
