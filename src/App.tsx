@@ -19,9 +19,8 @@ const App = () => {
           <HomePage />
         </ScrollView>
 
-        <ScrollView id="about">
-          <AboutPage />
-        </ScrollView>
+        {/* AboutPage has its own sections and scale effect */}
+        <AboutPage />
 
         <ScrollView id="projects">
           <ProjectsPage />

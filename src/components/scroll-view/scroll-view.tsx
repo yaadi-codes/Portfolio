@@ -13,7 +13,7 @@ const ScrollView = ({
   id,
   height = "calc(100vh - var(--header-height))",
   children,
-  threshold = 0.2,
+  threshold = 0.4,
 }: ScrollViewProps) => {
   const [ref, isVisible] = useOnScreen({ threshold });
 
