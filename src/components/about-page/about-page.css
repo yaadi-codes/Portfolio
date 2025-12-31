@@ -3,24 +3,5 @@
     position: relative;
     overflow: hidden;
     will-change: transform, border-radius;
-}
-
-/* Hero section - blue gradient (top) */
-.about-hero {
-    background-image: linear-gradient(0deg, rgb(135, 206, 235), rgb(65, 105, 225));
-}
-
-/* Skills section - light gradient */
-.about-skills {
-    background-image: linear-gradient(0deg, rgb(159, 217, 246), rgb(135, 206, 235));
-}
-
-/* Hobbies section - sky blue */
-.about-hobbies {
-    background-image: linear-gradient(0deg, rgb(180, 225, 250), rgb(159, 217, 246));
-}
-
-/* Certifications section - light to white */
-.about-certifications {
-    background-image: linear-gradient(0deg, rgb(220, 240, 255), rgb(180, 225, 250));
+    background-image: linear-gradient(0deg, rgb(65, 105, 225), rgb(0, 35, 102), rgb(0, 35, 102));
 }

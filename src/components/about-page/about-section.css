@@ -16,14 +16,14 @@
 }
 
 .about-section-content.fade-in {
-    animation: fadeIn 0.6s ease-in-out forwards;
+    animation: fadeInSection 0.6s ease-in-out forwards;
     opacity: 0;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInSection {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
 
     to {

@@ -1,4 +1,4 @@
-header{
+header {
     position: fixed;
     text-align: center;
     top: 0;
@@ -9,13 +9,13 @@ header{
     backdrop-filter: blur(5px);
     color: var(--pearl);
     z-index: 1000;
-    animation: fadeIn 1s ease;
+    animation: fadeInDown 1s ease;
     opacity: 1;
     transition: all 0.3s ease;
     will-change: opacity, transform;
 }
 
-header h1{
+header h1 {
     display: inline-block;
     font-size: 1em;
     text-align: center;
@@ -24,31 +24,31 @@ header h1{
     border-radius: 24px;
 }
 
-nav{
+nav {
     position: sticky;
-    top: 68px;  
+    top: 68px;
     z-index: 1000;
-    animation: fadeIn 1s ease;
+    animation: fadeInDown 1s ease;
     opacity: 1;
     will-change: opacity, transform;
 }
 
-nav ul{
+nav ul {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
-    background-color:var(--pearl);
+    background-color: var(--pearl);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 
-nav li{
+nav li {
     padding: 1px 0;
     text-align: center;
-    animation: slideInRight 2.5s ease;    
+    animation: slideInRight 2.5s ease;
 }
 
-nav li:hover{
+nav li:hover {
     cursor: pointer;
     background-color: var(--blur-DRB);
     color: var(--pearl);
@@ -57,13 +57,13 @@ nav li:hover{
     transition: all 1s ease;
 }
 
-nav li.active a{
+nav li.active a {
     background-color: var(--darker-royal-blue);
     color: var(--pearl);
     text-shadow: 0 0 5px var(--moonglare-yellow);
 }
 
-nav a{
+nav a {
     display: block;
     text-decoration: none;
     color: var(--charcoal);
@@ -74,7 +74,7 @@ nav a{
     letter-spacing: 1px;
 }
 
-nav a:hover{
+nav a:hover {
     color: inherit;
     text-shadow: 0 0 3px var(--moonglare-yellow);
 }
@@ -84,7 +84,7 @@ nav a:focus {
 }
 
 @media (max-width: 880px) {
-  nav {
-    top: 66px;
-  }
+    nav {
+        top: 66px;
+    }
 }
