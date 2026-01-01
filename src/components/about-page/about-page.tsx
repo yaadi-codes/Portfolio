@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useScrollScaleView } from '../../hooks';
 import AboutSection from './about-section';
 import AboutHeroView from './about-hero-view';
@@ -5,6 +6,11 @@ import AboutSkillsView from './about-skills-view';
 import AboutHobbiesView from './about-hobbies-view';
 import AboutCertificationsView from './about-certifications-view';
 import './about-page.css';
+
+// Images to preload for faster loading when sections become visible
+const PRELOAD_IMAGES = [
+  '/assets/images/github-pfp.png',
+];
 
 /**
  * About page with multiple scrollable sections.
@@ -17,6 +23,14 @@ const AboutPage = () => {
     borderRadiusMax: 24,
     translateYMax: 150,
   });
+
+  // Preload images when component mounts (before sections are visible)
+  useEffect(() => {
+    PRELOAD_IMAGES.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <div
