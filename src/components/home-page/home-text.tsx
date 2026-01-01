@@ -22,7 +22,6 @@ const HomeText = () => {
   // Use the hook and start when the typed-text span scrolls into view.
   const [typedText, typedRef] = useTypeWriter(sentences, {
     startWhenVisible: true,
-    initialDelay: 3000,
   });
 
   return (

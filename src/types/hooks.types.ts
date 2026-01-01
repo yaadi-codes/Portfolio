@@ -6,5 +6,4 @@ export type UseTypeWriterOptions = {
     loop?: boolean;
     startOnMount?: boolean;
     startWhenVisible?: boolean;
-    firstWordInstant?: boolean; // Show first word instantly, then type the rest
 };

@@ -13,7 +13,6 @@ export default function useTypeWriter(
     loop = true,
     startOnMount = true,
     startWhenVisible = false,
-    firstWordInstant = false, // NEW: Show first word instantly
   } = options;
 
   const [text, setText] = useState("");
@@ -23,7 +22,6 @@ export default function useTypeWriter(
   const timerRef = useRef<number | null>(null);
   const startedRef = useRef(false);
   const elementRef = useRef<HTMLSpanElement | null>(null);
-  const firstWordShownRef = useRef(false);
 
   const reduceMotion =
     typeof window !== "undefined" &&
@@ -53,28 +51,12 @@ export default function useTypeWriter(
       timerRef.current = window.setTimeout(cb, delay);
     }
 
-    // Get the first word end index (space or end of sentence)
-    function getFirstWordEndIndex(sentence: string): number {
-      const spaceIndex = sentence.indexOf(' ');
-      return spaceIndex === -1 ? sentence.length : spaceIndex;
-    }
-
     function tick() {
       const currentSentence = sentences[sentenceIndexRef.current] ?? "";
 
       if (!isDeletingRef.current) {
         // Typing
         if (charIndexRef.current < currentSentence.length) {
-          // If firstWordInstant is enabled and first word not yet shown
-          if (firstWordInstant && !firstWordShownRef.current && !isDeletingRef.current) {
-            const firstWordEnd = getFirstWordEndIndex(currentSentence);
-            charIndexRef.current = firstWordEnd;
-            setText(currentSentence.slice(0, charIndexRef.current));
-            firstWordShownRef.current = true;
-            scheduleNext(typingSpeed, tick);
-            return;
-          }
-
           charIndexRef.current += 1;
           setText(currentSentence.slice(0, charIndexRef.current));
 
@@ -107,7 +89,6 @@ export default function useTypeWriter(
 
         // Finished deleting — move to next sentence
         isDeletingRef.current = false;
-        firstWordShownRef.current = false; // Reset for next sentence
         sentenceIndexRef.current = (sentenceIndexRef.current + 1) % sentences.length;
         charIndexRef.current = 0;
 
@@ -156,9 +137,7 @@ export default function useTypeWriter(
       stop();
       if (observer) observer.disconnect();
     };
-    // Use both sentences and sentencesKey so the effect reliably updates when
-    // the sentence reference or contents change.
-  }, [sentencesKey, sentences, typingSpeed, deletingSpeed, pauseAtComma, pauseAtPeriod, loop, startOnMount, startWhenVisible, reduceMotion, firstWordInstant]);
+  }, [sentencesKey, sentences, typingSpeed, deletingSpeed, pauseAtComma, pauseAtPeriod, loop, startOnMount, startWhenVisible, reduceMotion]);
 
   return [text, elementRef] as const;
 }
