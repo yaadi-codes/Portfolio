@@ -3,8 +3,8 @@ export type UseTypeWriterOptions = {
     deletingSpeed?: number; // ms per char
     pauseAtComma?: number; // ms
     pauseAtPeriod?: number; // ms
-    initialDelay?: number; // ms before starting
     loop?: boolean;
     startOnMount?: boolean;
     startWhenVisible?: boolean;
+    firstWordInstant?: boolean; // Show first word instantly, then type the rest
 };
