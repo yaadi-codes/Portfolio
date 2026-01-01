@@ -5,6 +5,11 @@
     background-image: linear-gradient(167deg, var(--jet-black) 0%, var(--darker-royal-blue) 100%);
     overflow: hidden;
     will-change: transform, border-radius;
+    transition: transform 0.35s linear, border-radius 0.35s linear;
+}
+
+.home-section.no-transition {
+    transition: none;
 }
 
 #profile-pic {

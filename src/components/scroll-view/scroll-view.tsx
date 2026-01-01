@@ -13,7 +13,7 @@ const ScrollView = ({
   id,
   height = "calc(100vh - var(--header-height))",
   children,
-  threshold = 0.4,
+  threshold = 0.5,
 }: ScrollViewProps) => {
   const [ref, isVisible] = useOnScreen({ threshold });
 
@@ -25,7 +25,9 @@ const ScrollView = ({
       className="scroll-view-section"
     >
       {isVisible && (
-        <div className="scroll-view-content fade-in">{children}</div>
+        <div className="scroll-view-content fade-in">
+          {children}
+        </div>
       )}
     </section>
   );

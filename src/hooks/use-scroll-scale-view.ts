@@ -15,9 +15,20 @@ interface ScrollScaleViewResult {
 }
 
 /**
+ * Easing function for smoother transitions.
+ * Uses ease-in-out-cubic for symmetrical smooth entry and exit.
+ */
+function easeInOutCubic(t: number): number {
+    return t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+/**
  * Hook for bidirectional scale effect with vertical translation.
  * Element scales UP and moves UP when entering viewport.
  * Element scales DOWN when exiting.
+ * Uses easing for smooth, natural transitions.
  */
 export function useScrollScaleView(options: ScrollScaleViewOptions = {}): ScrollScaleViewResult {
     const {
@@ -48,19 +59,21 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
             // Distance from viewport center (0 = perfectly centered)
             const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
 
-            // Progress: 0 = at center (full scale), 1 = at edge (min scale)
-            const progress = Math.min(distanceFromCenter / scaleRange, 1);
+            // Linear progress: 0 = at center (full scale), 1 = at edge (min scale)
+            const linearProgress = Math.min(distanceFromCenter / scaleRange, 1);
 
-            // Scale from 1.0 (centered) to minScale (at edges)
-            const scale = 1 - ((1 - minScale) * progress);
+            // Apply easing for smoother transition
+            const easedProgress = easeInOutCubic(linearProgress);
 
-            // Border radius from 0 (centered) to max (at edges)
-            const borderRadius = borderRadiusMax * progress;
+            // Scale from 1.0 (centered) to minScale (at edges) with easing
+            const scale = 1 - ((1 - minScale) * easedProgress);
 
-            // Translate upward when entering from below (positive top = below center)
-            // At center: 0px, at edges: -translateYMax (moves up)
+            // Border radius from 0 (centered) to max (at edges) with easing
+            const borderRadius = borderRadiusMax * easedProgress;
+
+            // Translate upward when entering from below with easing
             const isBelow = elementCenter > viewportCenter;
-            const translateY = isBelow ? -translateYMax * progress : 0;
+            const translateY = isBelow ? -translateYMax * easedProgress : 0;
 
             setResult({ scale, borderRadius, translateY });
         };

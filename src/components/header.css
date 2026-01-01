@@ -11,7 +11,7 @@ header {
     z-index: 1000;
     animation: fadeInDown 1s ease;
     opacity: 1;
-    transition: all 0.3s ease;
+    transition: all 1s ease;
     will-change: opacity, transform;
 }
 
@@ -31,6 +31,15 @@ nav {
     animation: fadeInDown 1s ease;
     opacity: 1;
     will-change: opacity, transform;
+    transition: all 1s ease;
+}
+
+/* Hidden state - applies to both header and nav */
+header.hidden,
+nav.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
 }
 
 nav ul {

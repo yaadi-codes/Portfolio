@@ -18,7 +18,7 @@ const skillCategories: SkillCategory[] = [
     icon: '⚙️',
     title: 'Backend & API',
     description: 'Creating robust server-side logic and data flows',
-    skills: ['Node.js', 'Python', 'REST APIs', 'SQL'],
+    skills: ['Node.js', 'Java', 'REST APIs', 'SQL'],
   },
   {
     icon: '🛠️',
@@ -30,12 +30,14 @@ const skillCategories: SkillCategory[] = [
 
 const AboutSkillsView = () => {
   return (
+    <>
     <div className="about-skills-view">
       <p className="view-label">Technical Arsenal</p>
       <h1 className="view-title">Skills & Technologies</h1>
       <p className="view-description">
         A look at the tools, languages and frameworks I work with to build modern web applications
       </p>
+    </div>
       
       <div className="skills-grid">
         {skillCategories.map((category, index) => (
@@ -51,7 +53,8 @@ const AboutSkillsView = () => {
           </div>
         ))}
       </div>
-    </div>
+      </>
+    
   );
 };
 

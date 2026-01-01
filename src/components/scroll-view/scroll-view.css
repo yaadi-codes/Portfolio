@@ -10,8 +10,6 @@
 }
 
 .fade-in {
-    animation: fadeInUp 0.8s ease-in-out forwards;
+    animation: fadeInUp 1.2s ease-in-out forwards;
     opacity: 0;
 }
-
-/* fadeInUp is defined in app.css */

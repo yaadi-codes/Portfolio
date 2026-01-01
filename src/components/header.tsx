@@ -1,12 +1,15 @@
+import { useHeaderVisibility } from "../hooks";
 import "./header.css";
 
 const Header = () => {
+  const { isHidden } = useHeaderVisibility();
+
   return (
     <>
-      <header>
+      <header className={isHidden ? 'hidden' : ''}>
         <h1>My Portfolio</h1>
       </header>
-      <nav>
+      <nav className={isHidden ? 'hidden' : ''}>
         <ul>
           <li>
             <a href="#home">Home</a>

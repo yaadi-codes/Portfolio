@@ -29,19 +29,19 @@ const AboutPage = () => {
         transformOrigin: 'center center',
       }}
     >
-      <AboutSection className="about-hero">
+      <AboutSection className="about-hero" threshold={0.6}>
         <AboutHeroView />
       </AboutSection>
 
-      <AboutSection className="about-skills">
+      <AboutSection className="about-skills" threshold={0.4}>
         <AboutSkillsView />
       </AboutSection>
 
-      <AboutSection className="about-hobbies">
+      <AboutSection className="about-hobbies" threshold={0.6}>
         <AboutHobbiesView />
       </AboutSection>
 
-      <AboutSection className="about-certifications">
+      <AboutSection className="about-certifications" threshold={0.4}>
         <AboutCertificationsView />
       </AboutSection>
     </div>
