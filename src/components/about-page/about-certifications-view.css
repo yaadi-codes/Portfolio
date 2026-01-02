@@ -79,3 +79,86 @@
     color: var(--moonglare-yellow);
     font-weight: 500;
 }
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Laptop (1024px - 1440px) */
+@media (max-width: 1440px) {
+    .certifications-container {
+        max-width: 700px;
+    }
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .about-certifications-view {
+        padding: 50px 20px;
+        margin-bottom: 5%;
+    }
+
+    .certifications-container {
+        max-width: 100%;
+        gap: 32px;
+    }
+
+    .cert-section-title {
+        font-size: 1.1rem;
+    }
+
+    .cert-card {
+        padding: 18px 20px;
+    }
+
+    .cert-name {
+        font-size: 0.95rem;
+    }
+
+    .cert-issuer {
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile (<768px) */
+@media (max-width: 768px) {
+    .about-certifications-view {
+        padding: 40px 15px;
+        margin-bottom: 20px;
+    }
+
+    .certifications-container {
+        gap: 24px;
+    }
+
+    .cert-section-title {
+        font-size: 1rem;
+        padding-left: 5px;
+        margin-bottom: 12px;
+    }
+
+    .cert-list {
+        gap: 10px;
+    }
+
+    .cert-card {
+        padding: 16px 14px;
+        border-radius: 10px;
+    }
+
+    .cert-card:hover {
+        transform: translateX(3px);
+    }
+
+    .cert-name {
+        font-size: 0.9rem;
+    }
+
+    .cert-issuer {
+        font-size: 0.75rem;
+    }
+
+    .cert-year {
+        font-size: 0.7rem;
+    }
+}

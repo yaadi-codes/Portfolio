@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import { useOnScreen } from '../../hooks/use-on-screen';
 import './about-section.css';
 
@@ -11,7 +11,8 @@ interface AboutSectionProps {
 
 /**
  * A full-viewport-height section within the About page.
- * Content only mounts when the section enters the viewport.
+ * Content mounts when section enters viewport and STAYS mounted.
+ * Uses CSS opacity/visibility to hide without layout shift.
  * @param threshold - How much of the section must be visible before content loads (0-1, default 0.6)
  */
 const AboutSection = ({ 
@@ -21,6 +22,15 @@ const AboutSection = ({
   threshold = 0.6 
 }: AboutSectionProps) => {
   const [ref, isVisible] = useOnScreen({ threshold });
+  
+  // Once visible, stay mounted (prevents flutter from rapid visibility toggles)
+  const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  
+  useEffect(() => {
+    if (isVisible && !hasBeenVisible) {
+      setHasBeenVisible(true);
+    }
+  }, [isVisible, hasBeenVisible]);
 
   return (
     <section
@@ -28,8 +38,10 @@ const AboutSection = ({
       ref={ref}
       className={`about-section ${className}`}
     >
-      {isVisible && (
-        <div className="about-section-content fade-in">
+      {hasBeenVisible && (
+        <div 
+          className={`about-section-content ${isVisible ? 'visible' : 'hidden'}`}
+        >
           {children}
         </div>
       )}

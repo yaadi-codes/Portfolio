@@ -51,7 +51,7 @@ const AboutPage = () => {
         <AboutSkillsView />
       </AboutSection>
 
-      <AboutSection className="about-hobbies" threshold={0.6}>
+      <AboutSection className="about-hobbies" threshold={0.3}>
         <AboutHobbiesView />
       </AboutSection>
 

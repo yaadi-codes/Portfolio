@@ -4,7 +4,7 @@ interface ScrollScaleViewOptions {
     minScale?: number;        // Minimum scale at edges (default 0.7)
     scaleRange?: number;      // Scroll distance for full transition (default 400px)
     borderRadiusMax?: number; // Max border radius when scaled down (default 24px)
-    translateYMax?: number;   // Max upward translation when entering (default 100px)
+    translateYMax?: number;   // Max vertical translation at edges (default 100px)
 }
 
 interface ScrollScaleViewResult {
@@ -16,33 +16,31 @@ interface ScrollScaleViewResult {
 
 /**
  * Easing function for smoother transitions.
- * Uses ease-in-out-cubic for symmetrical smooth entry and exit.
+ * Uses ease-out-cubic for natural deceleration.
  */
-function easeInOutCubic(t: number): number {
-    return t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+function easeOutCubic(t: number): number {
+    return 1 - Math.pow(1 - t, 3);
 }
 
 /**
- * Hook for bidirectional scale effect with vertical translation.
- * Element scales UP and moves UP when entering viewport.
- * Element scales DOWN when exiting.
- * Uses easing for smooth, natural transitions.
+ * Hook for bidirectional scale effect with smooth vertical translation.
+ * Element scales UP when centered in viewport.
+ * Element scales DOWN when at edges.
+ * TranslateY smoothly transitions based on position relative to viewport.
  */
 export function useScrollScaleView(options: ScrollScaleViewOptions = {}): ScrollScaleViewResult {
     const {
         minScale = 0.7,
-        scaleRange = 400,
+        scaleRange = 500,  // Increased for smoother transition
         borderRadiusMax = 24,
-        translateYMax = 150,
+        translateYMax = 100,
     } = options;
 
     const ref = useRef<HTMLDivElement>(null);
     const [result, setResult] = useState({
         scale: minScale,
         borderRadius: borderRadiusMax,
-        translateY: -translateYMax,
+        translateY: 0,
     });
 
     useEffect(() => {
@@ -56,14 +54,17 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
             const elementCenter = rect.top + rect.height / 2;
             const viewportCenter = viewportHeight / 2;
 
-            // Distance from viewport center (0 = perfectly centered)
-            const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+            // Signed distance from viewport center (positive = below, negative = above)
+            const signedDistance = elementCenter - viewportCenter;
+
+            // Absolute distance for scale calculation
+            const absDistance = Math.abs(signedDistance);
 
             // Linear progress: 0 = at center (full scale), 1 = at edge (min scale)
-            const linearProgress = Math.min(distanceFromCenter / scaleRange, 1);
+            const linearProgress = Math.min(absDistance / scaleRange, 1);
 
             // Apply easing for smoother transition
-            const easedProgress = easeInOutCubic(linearProgress);
+            const easedProgress = easeOutCubic(linearProgress);
 
             // Scale from 1.0 (centered) to minScale (at edges) with easing
             const scale = 1 - ((1 - minScale) * easedProgress);
@@ -71,9 +72,12 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
             // Border radius from 0 (centered) to max (at edges) with easing
             const borderRadius = borderRadiusMax * easedProgress;
 
-            // Translate upward when entering from below with easing
-            const isBelow = elementCenter > viewportCenter;
-            const translateY = isBelow ? -translateYMax * easedProgress : 0;
+            // Smooth translateY based on signed distance
+            // Positive = element below center, translate up (negative Y)
+            // Negative = element above center, translate down (positive Y)
+            // Scales with distance from center, clamped to max
+            const normalizedDistance = Math.max(-1, Math.min(1, signedDistance / scaleRange));
+            const translateY = -normalizedDistance * translateYMax * easedProgress;
 
             setResult({ scale, borderRadius, translateY });
         };

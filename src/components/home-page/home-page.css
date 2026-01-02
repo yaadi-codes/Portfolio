@@ -33,3 +33,25 @@
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
 }
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablet (480px - 880px) */
+@media (min-width: 480px) and (max-width: 880px) {
+    #profile-pic {
+        max-width: 250px;
+        width: 40%;
+        right: 50px;
+    }
+}
+
+/* Mobile (<480px) */
+@media (max-width: 480px) {
+    #profile-pic {
+        max-width: 200px;
+        width: 50%;
+        right: 30px;
+    }
+}
