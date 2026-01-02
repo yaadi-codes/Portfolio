@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useScrollScaleView } from '../../hooks';
 import AboutSection from './about-section';
 import AboutHeroView from './about-hero-view';
@@ -12,6 +12,36 @@ const PRELOAD_IMAGES = [
   '/assets/images/github-pfp.png',
 ];
 
+// Breakpoint for mobile threshold adjustment
+const MOBILE_BREAKPOINT = 768;
+
+/**
+ * Hook to get responsive threshold values.
+ * Returns lower thresholds on mobile screens for better visibility.
+ */
+function useResponsiveThresholds() {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth <= MOBILE_BREAKPOINT
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Return thresholds: {desktop, mobile} pairs
+  return {
+    hero: isMobile ? 0.5 : 0.6,
+    skills: isMobile ? 0.8 : 0.53,
+    hobbies: isMobile ? 0.1 : 0.75,  // Much lower on mobile since content is tall
+    certifications: isMobile ? .5 : 0.578,
+  };
+}
+
 /**
  * AboutPage Component
  * 
@@ -24,6 +54,7 @@ const PRELOAD_IMAGES = [
  * Features:
  * - Bidirectional scroll-scale effect (scales up when entering, down when exiting)
  * - Each section has threshold-based visibility for content fade-in
+ * - Responsive thresholds (lower on mobile for taller sections)
  * - Image preloading for smoother experience
  * 
  * Configuration:
@@ -39,6 +70,8 @@ const AboutPage = () => {
     borderRadiusMax: 24,
     translateYMax: 150,
   });
+
+  const thresholds = useResponsiveThresholds();
 
   // Preload images when component mounts (before sections are visible)
   useEffect(() => {
@@ -59,19 +92,19 @@ const AboutPage = () => {
         transformOrigin: 'center center',
       }}
     >
-      <AboutSection className="about-hero" threshold={0.6}>
+      <AboutSection className="about-hero" threshold={thresholds.hero}>
         <AboutHeroView />
       </AboutSection>
 
-      <AboutSection className="about-skills" threshold={0.53}>
+      <AboutSection className="about-skills" threshold={thresholds.skills}>
         <AboutSkillsView />
       </AboutSection>
 
-      <AboutSection className="about-hobbies" threshold={0.75}>
+      <AboutSection className="about-hobbies" threshold={thresholds.hobbies}>
         <AboutHobbiesView />
       </AboutSection>
 
-      <AboutSection className="about-certifications" threshold={0.578}>
+      <AboutSection className="about-certifications" threshold={thresholds.certifications}>
         <AboutCertificationsView />
       </AboutSection>
     </div>
