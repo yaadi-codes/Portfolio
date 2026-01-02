@@ -7,47 +7,26 @@
  * - Stars have randomized sizes (width: 4-10px, height: 10-20px)
  * - New stars are created every 1500ms (optimized from 500ms)
  * - Stars are automatically cleaned up after their animation completes
- * - Disabled on mobile for performance
  * 
  * Used as a decorative background element on the HomePage.
  * Has aria-hidden="true" for accessibility.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./falling-star.css";
-
-// Mobile detection for performance
-const MOBILE_BREAKPOINT = 768;
 
 const Star = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== 'undefined' && window.innerWidth <= MOBILE_BREAKPOINT
-  );
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-
-    // Skip star generation on mobile for performance
-    if (isMobile) {
-      container.innerHTML = '';
-      return;
-    }
 
     const createStar = () => {
       const star = document.createElement("div");
       star.classList.add("star");
       star.style.left = `${Math.random() * 100}%`; // love
       
-      // Shorter duration for fewer concurrent stars (10-30s instead of 15-65s)
+      // Optimized duration (10-30s instead of 15-65s)
       const durationSeconds = 10 + Math.random() * 20;
       star.style.animationDuration = `${durationSeconds}s`;
 
@@ -81,17 +60,16 @@ const Star = () => {
     // Create an initial star immediately
     createStar();
 
-    // Reduced frequency: 1500ms instead of 500ms for fewer DOM operations
+    // Optimized frequency: 1500ms instead of 500ms
     const intervalId = setInterval(createStar, 1500);
 
     return () => {
       clearInterval(intervalId);
-      // Clear existing stars on unmount
       if (container) {
         container.innerHTML = '';
       }
     };
-  }, [isMobile]);
+  }, []);
 
   return <div ref={containerRef} className="falling-stars" aria-hidden="true"></div>;
 };

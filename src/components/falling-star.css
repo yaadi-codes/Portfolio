@@ -14,9 +14,9 @@
   top: -10px;
   animation: fall linear forwards;
   will-change: transform, opacity;
-  /* Simplified filter: removed blur for better performance */
+  /* Optimized filter: removed blur but kept good visibility */
   filter:
-    brightness(1.4) drop-shadow(0 0 4px rgba(238, 232, 170, 0.6));
+    brightness(1.4) drop-shadow(0 0 4px rgba(238, 232, 170)) drop-shadow(0 0 10px rgba(255, 234, 0, 0.4));
 }
 
 .star svg {
