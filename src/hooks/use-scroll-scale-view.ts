@@ -27,6 +27,8 @@ function easeOutCubic(t: number): number {
  * Element scales UP when centered in viewport.
  * Element scales DOWN when at edges.
  * TranslateY smoothly transitions based on position relative to viewport.
+ * 
+ * Performance: Uses requestAnimationFrame throttling to limit updates.
  */
 export function useScrollScaleView(options: ScrollScaleViewOptions = {}): ScrollScaleViewResult {
     const {
@@ -37,6 +39,7 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
     } = options;
 
     const ref = useRef<HTMLDivElement>(null);
+    const rafRef = useRef<number | null>(null);
     const [result, setResult] = useState({
         scale: minScale,
         borderRadius: borderRadiusMax,
@@ -44,7 +47,7 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
     });
 
     useEffect(() => {
-        const handleScroll = () => {
+        const calculateValues = () => {
             if (!ref.current) return;
 
             const rect = ref.current.getBoundingClientRect();
@@ -73,22 +76,34 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
             const borderRadius = borderRadiusMax * easedProgress;
 
             // Smooth translateY based on signed distance
-            // Positive = element below center, translate up (negative Y)
-            // Negative = element above center, translate down (positive Y)
-            // Scales with distance from center, clamped to max
             const normalizedDistance = Math.max(-1, Math.min(1, signedDistance / scaleRange));
             const translateY = -normalizedDistance * translateYMax * easedProgress;
 
             setResult({ scale, borderRadius, translateY });
         };
 
-        handleScroll();
+        const handleScroll = () => {
+            // Throttle with requestAnimationFrame for performance
+            if (rafRef.current !== null) return;
+
+            rafRef.current = requestAnimationFrame(() => {
+                calculateValues();
+                rafRef.current = null;
+            });
+        };
+
+        // Initial calculation
+        calculateValues();
+
         window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('resize', handleScroll, { passive: true });
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleScroll);
+            if (rafRef.current !== null) {
+                cancelAnimationFrame(rafRef.current);
+            }
         };
     }, [minScale, scaleRange, borderRadiusMax, translateYMax]);
 

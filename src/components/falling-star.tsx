@@ -3,31 +3,52 @@
  * 
  * Creates an animated starfield background effect:
  * - Generates SVG stars at random horizontal positions
- * - Stars fall from top to bottom with varying durations (15-65s)
+ * - Stars fall from top to bottom with varying durations (10-30s)
  * - Stars have randomized sizes (width: 4-10px, height: 10-20px)
- * - New stars are created every 500ms
+ * - New stars are created every 1500ms (optimized from 500ms)
  * - Stars are automatically cleaned up after their animation completes
+ * - Disabled on mobile for performance
  * 
  * Used as a decorative background element on the HomePage.
  * Has aria-hidden="true" for accessibility.
  */
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./falling-star.css";
+
+// Mobile detection for performance
+const MOBILE_BREAKPOINT = 768;
 
 const Star = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth <= MOBILE_BREAKPOINT
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // Skip star generation on mobile for performance
+    if (isMobile) {
+      container.innerHTML = '';
+      return;
+    }
 
     const createStar = () => {
       const star = document.createElement("div");
       star.classList.add("star");
       star.style.left = `${Math.random() * 100}%`; // love
       
-      // Calculate duration once and use for both animation and cleanup
-      const durationSeconds = 15 + Math.random() * 50; // 15-65 seconds
+      // Shorter duration for fewer concurrent stars (10-30s instead of 15-65s)
+      const durationSeconds = 10 + Math.random() * 20;
       star.style.animationDuration = `${durationSeconds}s`;
 
       const width = 4 + Math.random() * 6; // 4px - 10px
@@ -57,10 +78,11 @@ const Star = () => {
       }, cleanupMs);
     };
 
-    // Create an initial star immediately so we don't wait for the first interval
+    // Create an initial star immediately
     createStar();
 
-    const intervalId = setInterval(createStar, 500);
+    // Reduced frequency: 1500ms instead of 500ms for fewer DOM operations
+    const intervalId = setInterval(createStar, 1500);
 
     return () => {
       clearInterval(intervalId);
@@ -69,7 +91,7 @@ const Star = () => {
         container.innerHTML = '';
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return <div ref={containerRef} className="falling-stars" aria-hidden="true"></div>;
 };

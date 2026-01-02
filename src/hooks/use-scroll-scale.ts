@@ -1,4 +1,4 @@
-import { useEffect, useState, useLayoutEffect } from 'react';
+import { useEffect, useState, useLayoutEffect, useRef } from 'react';
 
 interface ScrollScaleOptions {
     minScale?: number;      // Minimum scale when scrolled away (default 0.85)
@@ -36,6 +36,8 @@ function calculateScale(scrollY: number, maxScroll: number, minScale: number, in
  * Hook that returns scale and border-radius values based on scroll position.
  * Section starts at 100% and SHRINKS as user scrolls down (exits viewport).
  * Uses easing for smooth, natural transitions.
+ * 
+ * Performance: Uses requestAnimationFrame throttling to limit updates.
  */
 export function useScrollScale(options: ScrollScaleOptions = {}): ScrollScaleResult {
     const {
@@ -57,6 +59,9 @@ export function useScrollScale(options: ScrollScaleOptions = {}): ScrollScaleRes
         isInitialized: false,
     });
 
+    // RAF throttle ref
+    const rafRef = useRef<number | null>(null);
+
     // Use layoutEffect to set initialized before paint
     useLayoutEffect(() => {
         const values = calculateScale(window.scrollY, maxScroll, minScale, initialRadius);
@@ -65,12 +70,23 @@ export function useScrollScale(options: ScrollScaleOptions = {}): ScrollScaleRes
 
     useEffect(() => {
         const handleScroll = () => {
-            const values = calculateScale(window.scrollY, maxScroll, minScale, initialRadius);
-            setResult(prev => ({ ...values, isInitialized: prev.isInitialized }));
+            // Throttle with requestAnimationFrame for performance
+            if (rafRef.current !== null) return;
+
+            rafRef.current = requestAnimationFrame(() => {
+                const values = calculateScale(window.scrollY, maxScroll, minScale, initialRadius);
+                setResult(prev => ({ ...values, isInitialized: prev.isInitialized }));
+                rafRef.current = null;
+            });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (rafRef.current !== null) {
+                cancelAnimationFrame(rafRef.current);
+            }
+        };
     }, [minScale, maxScroll, initialRadius]);
 
     return result;
