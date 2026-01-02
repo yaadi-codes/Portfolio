@@ -35,7 +35,7 @@ function useResponsiveThresholds() {
 
   // Return thresholds: {desktop, mobile} pairs
   return {
-    hero: isMobile ? 0.5 : 0.6,
+    hero: isMobile ? 0.45 : 0.6,
     skills: isMobile ? 0.8 : 0.53,
     hobbies: isMobile ? 0.1 : 0.75,  // Much lower on mobile since content is tall
     certifications: isMobile ? .5 : 0.578,
