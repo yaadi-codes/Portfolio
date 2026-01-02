@@ -3,6 +3,6 @@
     position: relative;
     overflow: hidden;
     will-change: transform, border-radius;
-    transition: transform 0.35s linear, border-radius 0.35s linear;
+    transition: transform 0.5s ease-out, border-radius 0.5s ease-out;
     background-image: linear-gradient(0deg, rgb(65, 105, 225), rgb(0, 35, 102), rgb(0, 35, 102));
 }
