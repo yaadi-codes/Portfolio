@@ -1,3 +1,16 @@
+/**
+ * FallingStar Component
+ * 
+ * Creates an animated starfield background effect:
+ * - Generates SVG stars at random horizontal positions
+ * - Stars fall from top to bottom with varying durations (15-65s)
+ * - Stars have randomized sizes (width: 4-10px, height: 10-20px)
+ * - New stars are created every 500ms
+ * - Stars are automatically cleaned up after their animation completes
+ * 
+ * Used as a decorative background element on the HomePage.
+ * Has aria-hidden="true" for accessibility.
+ */
 import { useEffect, useRef } from "react";
 import "./falling-star.css";
 
@@ -11,7 +24,7 @@ const Star = () => {
     const createStar = () => {
       const star = document.createElement("div");
       star.classList.add("star");
-      star.style.left = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`; // love
       
       // Calculate duration once and use for both animation and cleanup
       const durationSeconds = 15 + Math.random() * 50; // 15-65 seconds
@@ -51,7 +64,7 @@ const Star = () => {
 
     return () => {
       clearInterval(intervalId);
-      // Optional: clear existing stars on unmount if desired
+      // Clear existing stars on unmount
       if (container) {
         container.innerHTML = '';
       }

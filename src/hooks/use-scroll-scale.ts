@@ -18,7 +18,7 @@ interface ScrollScaleResult {
  * Uses ease-out-cubic for a natural deceleration feel.
  */
 function easeOutCubic(t: number): number {
-    return 1 - Math.pow(1 - t, 3);
+    return 1 - Math.pow(1 - t, 3); // coding
 }
 
 /**

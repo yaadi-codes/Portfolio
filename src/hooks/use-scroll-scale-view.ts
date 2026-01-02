@@ -79,17 +79,6 @@ export function useScrollScaleView(options: ScrollScaleViewOptions = {}): Scroll
             const normalizedDistance = Math.max(-1, Math.min(1, signedDistance / scaleRange));
             const translateY = -normalizedDistance * translateYMax * easedProgress;
 
-            // DEBUG: Log values to understand scale calculation
-            console.log('[ScrollScale]', {
-                rectHeight: rect.height,
-                elementCenter: Math.round(elementCenter),
-                viewportCenter: Math.round(viewportCenter),
-                absDistance: Math.round(absDistance),
-                scaleRange,
-                linearProgress: linearProgress.toFixed(3),
-                scale: scale.toFixed(3),
-            });
-
             setResult({ scale, borderRadius, translateY });
         };
 

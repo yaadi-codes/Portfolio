@@ -1,3 +1,15 @@
+/**
+ * AboutHobbiesView Component
+ * 
+ * Displays personal hobbies and interests in a responsive grid:
+ * - Gaming, Reading, Music, Fitness, Films, Development, Volunteering, Art
+ * 
+ * Each hobby card features:
+ * - Emoji icon and title
+ * - Brief description
+ * - Hover-reveal preview list showing specific examples
+ * - 3D tilt effect and shine animation on hover
+ */
 import './about-hobbies-view.css';
 
 interface Hobby {
@@ -11,7 +23,7 @@ const hobbies: Hobby[] = [
   {
     icon: '🎮',
     title: 'Gaming',
-    description: 'Exploring virtual worlds and competitive gaming',
+    description: 'Exploring virtual worlds and competitive gaming', // coding
     previewItems: ['Chess', 'PUBG', 'Call of Duty', 'Strategy Games'],
   },
   {

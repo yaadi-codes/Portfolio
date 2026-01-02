@@ -25,7 +25,19 @@ const techIcons: TechIcon[] = [
 ];
 
 /**
- * Hero section for the About page - first view in the scroll cycle
+ * AboutHeroView Component
+ * 
+ * Hero section displaying introduction and animated tech stack:
+ * - Left side: Name, headline, description, and scroll indicator
+ * - Right side: 3D orbiting tech icons around profile picture
+ * 
+ * Orbit Animation System:
+ * - Ring 1: Horizontal orbit (rotateX: 70deg)
+ * - Ring 2: Tilted 60° clockwise (rotateX: 70deg, rotateZ: 60deg) - reverse direction
+ * - Ring 3: Tilted 60° counter-clockwise (rotateX: 70deg, rotateZ: -60deg)
+ * 
+ * Icons are positioned using CSS custom properties (--i, --total) for
+ * automatic distribution around each ring.
  */
 const AboutHeroView = () => {
   // Group icons by ring

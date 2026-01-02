@@ -1,3 +1,16 @@
+/**
+ * AboutCertificationsView Component
+ * 
+ * Displays professional certifications organized by status:
+ * - ✅ Completed: Earned certifications with year
+ * - 🔄 In Progress: Currently pursuing
+ * - 🎯 Interested In: Future certification goals
+ * 
+ * Each certification card shows:
+ * - Certification name
+ * - Issuing organization
+ * - Colored left border indicating status (green/yellow/blue)
+ */
 import './about-certifications-view.css';
 
 interface Certification {

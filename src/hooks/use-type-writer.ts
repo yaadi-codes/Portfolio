@@ -1,13 +1,36 @@
 import { useEffect, useRef, useState } from "react";
 import type { UseTypeWriterOptions } from "../types";
 
+/**
+ * useTypeWriter Hook
+ * 
+ * Creates a typewriter text animation effect that cycles through sentences.
+ * 
+ * Features:
+ * - Types out text character by character
+ * - Pauses at punctuation (commas: 700ms, periods: 1000ms)
+ * - Deletes text before moving to next sentence
+ * - Respects prefers-reduced-motion accessibility setting
+ * 
+ * @param sentences - Array of sentences to cycle through
+ * @param options - Configuration options:
+ *   - typingSpeed: Delay between characters (default: 100ms)
+ *   - deletingSpeed: Delay when deleting (default: 30ms)
+ *   - pauseAtComma: Pause duration at commas (default: 700ms)
+ *   - pauseAtPeriod: Pause duration at periods (default: 1000ms)
+ *   - loop: Whether to repeat sentences (default: true)
+ *   - startOnMount: Start immediately (default: true)
+ *   - startWhenVisible: Start when element enters viewport (default: false)
+ * 
+ * @returns [text, elementRef] - Current text and ref to attach to element
+ */
 export default function useTypeWriter(
   sentences: string[],
   options: UseTypeWriterOptions = {}
 ) {
   const {
     typingSpeed = 100,
-    deletingSpeed = 30,
+    deletingSpeed = 30, // I
     pauseAtComma = 700,
     pauseAtPeriod = 1000,
     loop = true,

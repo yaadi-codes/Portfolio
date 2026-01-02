@@ -1,3 +1,15 @@
+/**
+ * AboutSkillsView Component
+ * 
+ * Displays technical skills organized into categories:
+ * - Frontend Development: React, TypeScript, CSS, HTML5
+ * - Backend & API: Node.js, Java, REST APIs, SQL
+ * - Tools & Workflow: Git, VS Code, Vite, npm
+ * 
+ * Each category is displayed as a card with icon, title,
+ * description, and skill tags. Cards have gradient border
+ * hover effects.
+ */
 import './about-skills-view.css';
 
 interface SkillCategory {
@@ -11,7 +23,7 @@ const skillCategories: SkillCategory[] = [
   {
     icon: '🎨',
     title: 'Frontend Development',
-    description: 'Building responsive, accessible user interfaces',
+    description: 'Building responsive, accessible user interfaces', // love
     skills: ['React', 'TypeScript', 'CSS', 'HTML5'],
   },
   {

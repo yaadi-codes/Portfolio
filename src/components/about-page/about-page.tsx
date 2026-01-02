@@ -13,8 +13,24 @@ const PRELOAD_IMAGES = [
 ];
 
 /**
- * About page with multiple scrollable sections.
- * Scales up when entering viewport, scales down when exiting.
+ * AboutPage Component
+ * 
+ * Multi-section scrollable page containing:
+ * - Hero: Introduction with orbiting tech icons around profile picture
+ * - Skills: Technical skills organized by category (Frontend, Backend, Tools)
+ * - Hobbies: Personal interests with hover-reveal details
+ * - Certifications: Professional certifications by status
+ * 
+ * Features:
+ * - Bidirectional scroll-scale effect (scales up when entering, down when exiting)
+ * - Each section has threshold-based visibility for content fade-in
+ * - Image preloading for smoother experience
+ * 
+ * Configuration:
+ * - minScale: 0.7 (shrinks to 70% at edges)
+ * - scaleRange: 1300px (distance for full scale transition)
+ * - borderRadiusMax: 24px (rounded corners when scaled)
+ * - translateYMax: 150px (vertical shift during transition)
  */
 const AboutPage = () => {
   const { scale, borderRadius, translateY, ref } = useScrollScaleView({
