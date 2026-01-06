@@ -1,3 +1,5 @@
+import { FlippingTextProvider } from './flipping-text-context';
+import FlippingText from './flipping-text';
 import './about-hero-view.css';
 
 // Tech icons data - easily expandable
@@ -50,10 +52,12 @@ const AboutHeroView = () => {
       <div className="hero-content">
         <p className="hero-label">Malique's Source Code</p>
         <h1 className="hero-title">
-          The ideas,<br />
-          skills, and<br />
-          mindset behind<br />
-          my work
+          <FlippingTextProvider>
+            The <FlippingText slotIndex={0} />,<br />
+            <FlippingText slotIndex={1} />, and<br />
+            <FlippingText slotIndex={2} /> behind<br />
+            my work
+          </FlippingTextProvider>
         </h1>
         <p className="hero-description">
           I'm a third-year computing student with a strong interest in web development 

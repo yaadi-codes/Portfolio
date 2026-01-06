@@ -36,7 +36,7 @@ function useResponsiveThresholds() {
   // Return thresholds: {desktop, mobile} pairs
   return {
     hero: isMobile ? 0.45 : 0.6,
-    skills: isMobile ? 0.8 : 0.53,
+    skills: isMobile ? 0.75 : 0.53,
     hobbies: isMobile ? 0.1 : 0.75,  // Much lower on mobile since content is tall
     certifications: isMobile ? .5 : 0.578,
   };
@@ -72,6 +72,17 @@ const AboutPage = () => {
   });
 
   const thresholds = useResponsiveThresholds();
+  
+  // Check if mobile for disabling scale effect
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' && window.innerWidth <= MOBILE_BREAKPOINT
+  );
+  
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Preload images when component mounts (before sections are visible)
   useEffect(() => {
@@ -81,16 +92,19 @@ const AboutPage = () => {
     });
   }, []);
 
+  // Disable scale effect on mobile
+  const mobileStyle = isMobile ? {} : {
+    transform: `scale(${scale}) translateY(${translateY}px)`,
+    borderRadius: `${borderRadius}px`,
+    transformOrigin: 'center center',
+  };
+
   return (
     <div
       id="about"
       className="about-page"
       ref={ref}
-      style={{
-        transform: `scale(${scale}) translateY(${translateY}px)`,
-        borderRadius: `${borderRadius}px`,
-        transformOrigin: 'center center',
-      }}
+      style={mobileStyle}
     >
       <AboutSection className="about-hero" threshold={thresholds.hero}>
         <AboutHeroView />
