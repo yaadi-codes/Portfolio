@@ -8,6 +8,8 @@
   --blur-DRB: rgba(0, 35, 102, 0.7);
   --moonglare-yellow: #EEE8AA;
   --header-height: 66px;
+  /* Shared animation easing */
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Ensure main content starts below header */
@@ -31,8 +33,7 @@ body {
 }
 
 section {
-  min-height: 100vh;
-  /* padding: 8% 5% 0;    */
+  min-height: auto;
   z-index: 1;
 }
 
@@ -86,39 +87,7 @@ section {
   }
 }
 
-@keyframes wave-hand-hover {
-  0% {
-    transform: scaleX(-1) rotate(0deg);
-  }
 
-  10% {
-    transform: scaleX(-1) rotate(-14deg);
-  }
-
-  20% {
-    transform: scaleX(-1) rotate(8deg);
-  }
-
-  30% {
-    transform: scaleX(-1) rotate(-14deg);
-  }
-
-  40% {
-    transform: scaleX(-1) rotate(4deg);
-  }
-
-  50% {
-    transform: scaleX(-1) rotate(-10deg);
-  }
-
-  60% {
-    transform: scaleX(-1) rotate(0deg);
-  }
-
-  100% {
-    transform: scaleX(-1) rotate(0deg);
-  }
-}
 
 /* cursor blinking animation style */
 @keyframes blink {
@@ -245,53 +214,5 @@ section {
   to {
     transform: translateY(0);
     opacity: 1;
-  }
-}
-
-@keyframes slideOutTop {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideOutBottom {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideOutLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideOutRight {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(100%);
-    opacity: 0;
   }
 }

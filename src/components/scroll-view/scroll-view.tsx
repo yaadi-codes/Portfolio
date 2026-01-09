@@ -11,7 +11,7 @@ interface ScrollViewProps {
 
 const ScrollView = ({
   id,
-  height = "calc(100vh - var(--header-height))",
+  height = "auto",
   children,
   threshold = 0.5,
 }: ScrollViewProps) => {
@@ -24,11 +24,10 @@ const ScrollView = ({
       style={{ minHeight: height }}
       className="scroll-view-section"
     >
-      {isVisible && (
-        <div className="scroll-view-content fade-in">
-          {children}
-        </div>
-      )}
+      {/* Always render children to preserve layout, use CSS to control visibility */}
+      <div className={`scroll-view-content ${isVisible ? 'fade-in' : 'fade-out'}`}>
+        {children}
+      </div>
     </section>
   );
 };

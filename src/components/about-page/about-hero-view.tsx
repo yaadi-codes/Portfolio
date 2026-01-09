@@ -1,5 +1,4 @@
-import { FlippingTextProvider } from './flipping-text-context';
-import FlippingText from './flipping-text';
+import { useAnimateOnView } from '../../hooks/use-animate-on-view';
 import './about-hero-view.css';
 
 // Tech icons data - easily expandable
@@ -42,31 +41,28 @@ const techIcons: TechIcon[] = [
  * automatic distribution around each ring.
  */
 const AboutHeroView = () => {
+  const [heroRef, heroAnimated] = useAnimateOnView({ threshold: 0.2 });
+  
   // Group icons by ring
   const ring1Icons = techIcons.filter(icon => icon.ring === 1);
   const ring2Icons = techIcons.filter(icon => icon.ring === 2);
   const ring3Icons = techIcons.filter(icon => icon.ring === 3);
 
   return (
-    <div className="about-hero-view">
+    <div 
+      ref={heroRef}
+      className={`about-hero-view ${heroAnimated ? 'animate' : ''}`}
+    >
       <div className="hero-content">
         <p className="hero-label">Malique's Source Code</p>
         <h1 className="hero-title">
-          <FlippingTextProvider>
-            The <FlippingText slotIndex={0} />,<br />
-            <FlippingText slotIndex={1} />, and<br />
-            <FlippingText slotIndex={2} /> behind<br />
-            my work
-          </FlippingTextProvider>
+          The ideas,<br /> skills, and <br /> mindset <br /> behind my work
         </h1>
         <p className="hero-description">
           I'm a third-year computing student with a strong interest in web development 
           and software design. I enjoy building practical, well-structured applications 
           that are easy to use and easy to maintain.
         </p>
-        <div className="scroll-indicator">
-          <span className="scroll-icon">❯❯</span>
-        </div>
       </div>
       
       <div className="hero-image-container">
@@ -121,13 +117,18 @@ const AboutHeroView = () => {
             className="profile-center"
           >
             <img
-              src="/assets/images/github-pfp.png"
+              src="/assets/images/github-pfp.webp"
               alt="Profile Picture"
               className="hero-profile-pic"
               title="Click to visit my GitHub Account 👨‍💻"
             />
           </a>
         </div>
+      </div>
+      
+      <div className="hero-scroll-cue">
+        <span className="scroll-text">Scroll to explore</span>
+        <div className="scroll-arrow">↓</div>
       </div>
     </div>
   );

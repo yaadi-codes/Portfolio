@@ -1,0 +1,49 @@
+.global-scroll-cue {
+    position: fixed;
+    bottom: 30px;
+    right: 10%;
+    z-index: 50;
+    /* Above most content, below modals/header if needed */
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.global-scroll-cue.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cue-arrow {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-shadow: rgb(238, 232, 170, 0.9) 0 0 10px;
+    color: var(--moonglare-yellow);
+    animation: globalBounce 2s infinite ease-in-out;
+}
+
+@keyframes globalBounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(10px);
+    }
+
+    60% {
+        transform: translateY(5px);
+    }
+}
+
+/* Hide on very short screens to avoid overlap */
+@media (max-height: 600px) {
+    .global-scroll-cue {
+        display: none;
+    }
+}

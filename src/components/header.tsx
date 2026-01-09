@@ -11,6 +11,14 @@
 import { useHeaderVisibility } from "../hooks";
 import "./header.css";
 
+// Navigation links data - add/modify sections here
+const NAV_LINKS = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
+] as const;
+
 const Header = () => {
   const { isHidden } = useHeaderVisibility();
 
@@ -21,18 +29,11 @@ const Header = () => {
       </header>
       <nav className={isHidden ? 'hidden' : ''}>
         <ul>
-          <li>
-            <a href="#home">Home</a>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
+          {NAV_LINKS.map(({ href, label }) => (
+            <li key={href}>
+              <a href={href}>{label}</a>
+            </li>
+          ))}
         </ul>
       </nav>
     </>
@@ -40,3 +41,4 @@ const Header = () => {
 };
 
 export default Header;
+

@@ -10,6 +10,7 @@
  * description, and skill tags. Cards have gradient border
  * hover effects.
  */
+import { useAnimateOnView } from '../../hooks/use-animate-on-view';
 import './about-skills-view.css';
 
 interface SkillCategory {
@@ -41,15 +42,18 @@ const skillCategories: SkillCategory[] = [
 ];
 
 const AboutSkillsView = () => {
+  const [skillsRef, skillsAnimated] = useAnimateOnView({ threshold: 0.2 });
+
   return (
-    <>
-    <div className="about-skills-view">
+    <div 
+      ref={skillsRef}
+      className={`about-skills-view ${skillsAnimated ? 'animate' : ''}`}
+    >
       <p className="view-label">Technical Arsenal</p>
       <h1 className="view-title">Skills & Technologies</h1>
       <p className="view-description">
         A look at the tools, languages and frameworks I work with to build modern web applications
       </p>
-    </div>
       
       <div className="skills-grid">
         {skillCategories.map((category, index) => (
@@ -65,8 +69,7 @@ const AboutSkillsView = () => {
           </div>
         ))}
       </div>
-      </>
-    
+    </div>
   );
 };
 

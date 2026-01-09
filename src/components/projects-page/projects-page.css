@@ -1,0 +1,556 @@
+/* ========================================
+   PROJECTS PAGE STYLES
+   Spotlight + Carousel Layout
+   ======================================== */
+
+/* Local CSS Variables for this component */
+.projects-page {
+    /* Glass effect colors */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-bg-light: rgba(255, 255, 255, 0.05);
+    --glass-bg-hover: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-light: rgba(255, 255, 255, 0.15);
+    --glass-border-active: rgba(255, 255, 255, 0.3);
+
+    /* Blue accent variations */
+    --blue-glow-soft: rgba(65, 105, 225, 0.1);
+    --blue-bg-soft: rgba(65, 105, 225, 0.15);
+    --blue-border-soft: rgba(65, 105, 225, 0.2);
+    --blue-glow-medium: rgba(65, 105, 225, 0.3);
+    --blue-glow-strong: rgba(65, 105, 225, 0.4);
+
+    /* Other accents */
+    --yellow-glow: rgba(238, 232, 170, 0.5);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+
+    /* Component styles */
+    background: transparent;
+    color: var(--pearl);
+    padding: 80px 8%;
+    width: 100vw;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================
+   INTRODUCTION SECTION
+   ======================================== */
+
+.projects-intro {
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+    padding: 0;
+    margin-bottom: 60px;
+    background: transparent;
+}
+
+.intro-label {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--moonglare-yellow);
+    text-shadow: 0 0 10px var(--yellow-glow);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+    /* Animation - triggered by .animate class on parent */
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate .intro-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--pearl);
+    letter-spacing: 0.1rem;
+    margin-bottom: 20px;
+    display: block;
+    /* Animation - triggered by .animate class on parent */
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s;
+}
+
+.animate .intro-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-description {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--pearl);
+    line-height: 1.7;
+    display: block;
+    /* Animation - triggered by .animate class on parent */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.animate .intro-description {
+    opacity: 0.7;
+    transform: translateY(0);
+}
+
+/* ========================================
+   SPOTLIGHT SECTION
+   ======================================== */
+
+.spotlight-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 120px;
+}
+
+.spotlight-container {
+    display: inherit;
+    gap: 48px;
+    align-items: flex-start;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 40px;
+    transition: all 0.4s ease;
+    margin-bottom: 60px;
+}
+
+.spotlight-container:hover {
+    border-color: var(--blue-border-soft);
+    box-shadow: 0 0 40px var(--blue-glow-soft);
+}
+
+/* Screenshot Area */
+.spotlight-media {
+    flex: 1;
+    max-width: 50%;
+    /* Animation - triggered by .animate class on parent */
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+.animate .spotlight-media {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.screenshot-display {
+    aspect-ratio: 16 / 10;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--darker-royal-blue) 0%, var(--blue-glow-medium) 100%);
+}
+
+.screenshot-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.screenshot-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+.placeholder-text {
+    font-size: 1rem;
+    color: var(--pearl);
+    opacity: 0.4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Info Area */
+.spotlight-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* Animation - triggered by .animate class on parent */
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+}
+
+.animate .spotlight-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-category {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--light-royal-blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    background: var(--blue-bg-soft);
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.project-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--pearl);
+    margin-top: 8px;
+}
+
+.project-subtitle {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    color: var(--moonglare-yellow);
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.project-description {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    color: var(--pearl);
+    opacity: 0.7;
+    line-height: 1.7;
+    margin: 8px 0 16px;
+}
+
+/* Tech Stack */
+.tech-stack {
+    margin: 16px 0;
+}
+
+.tech-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--pearl);
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid var(--light-royal-blue);
+    color: var(--light-royal-blue);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    background: var(--light-royal-blue);
+    color: var(--pearl);
+}
+
+.tech-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* Action Buttons */
+.project-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.action-btn .btn-icon {
+    font-size: 1rem;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, var(--darker-royal-blue), var(--light-royal-blue));
+    color: var(--pearl);
+}
+
+.action-btn.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--blue-glow-strong);
+}
+
+.action-btn.secondary {
+    background: var(--glass-bg-light);
+    border: 1px solid var(--glass-border-light);
+    color: var(--pearl);
+}
+
+.action-btn.secondary:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-active);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   CAROUSEL SECTION
+   ======================================== */
+
+.carousel-section {
+    display: block;
+    width: 100%;
+}
+
+.carousel-header {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.carousel-label {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--moonglare-yellow);
+    text-shadow: 0 0 10px var(--yellow-glow);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.carousel-track {
+    overflow: hidden;
+    padding: 10px 0 20px;
+    position: relative;
+}
+
+/* Infinite scrolling slider */
+.carousel-slider {
+    display: flex;
+    gap: 20px;
+    animation: carouselScroll 30s linear infinite;
+    width: fit-content;
+}
+
+/* Pause animation on hover for interaction */
+.carousel-track:hover .carousel-slider {
+    animation-play-state: paused;
+}
+
+@keyframes carouselScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Move exactly half the width (one full set of cards) */
+        transform: translateX(-50%);
+    }
+}
+
+/* Carousel Cards */
+.carousel-card {
+    flex: 0 0 auto;
+    width: 220px;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.carousel-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--blue-glow-strong);
+    box-shadow: 0 8px 24px var(--shadow-dark);
+}
+
+.carousel-card.selected {
+    border-color: var(--light-royal-blue);
+    box-shadow:
+        0 0 0 2px var(--light-royal-blue),
+        0 8px 30px var(--blue-glow-medium);
+}
+
+.card-thumbnail {
+    height: 120px;
+    background: linear-gradient(135deg, var(--darker-royal-blue) 0%, var(--blue-glow-medium) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumb-placeholder {
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.card-info {
+    padding: 16px;
+    text-align: left;
+}
+
+.carousel-card .card-title {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--pearl);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.carousel-card .card-category {
+    font-size: 0.75rem;
+    color: var(--light-royal-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Laptop (1200px) */
+@media (max-width: 1200px) {
+    .projects-page {
+        padding: 60px 5%;
+    }
+
+    .spotlight-container {
+        padding: 30px;
+        gap: 40px;
+    }
+
+    .project-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Tablet (900px) */
+@media (max-width: 900px) {
+    .spotlight-container {
+        flex-direction: column;
+    }
+
+    .spotlight-media {
+        max-width: 100%;
+    }
+
+    .intro-title {
+        font-size: 2.5rem;
+    }
+
+    .project-title {
+        font-size: 1.6rem;
+    }
+
+    .carousel-card {
+        width: 180px;
+    }
+
+    .card-thumbnail {
+        height: 100px;
+    }
+}
+
+/* Mobile (600px) */
+@media (max-width: 600px) {
+    .projects-page {
+        padding: 40px 5%;
+        gap: 40px;
+    }
+
+    .intro-title {
+        font-size: 2rem;
+    }
+
+    .intro-description {
+        font-size: 1rem;
+    }
+
+    .spotlight-container {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .project-title {
+        font-size: 1.4rem;
+    }
+
+    .project-subtitle {
+        font-size: 1rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+    }
+
+    .project-actions {
+        flex-direction: column;
+    }
+
+    .carousel-card {
+        width: 160px;
+    }
+
+    .card-thumbnail {
+        height: 90px;
+    }
+
+    .card-info {
+        padding: 12px;
+    }
+
+    .carousel-card .card-title {
+        font-size: 0.9rem;
+    }
+}

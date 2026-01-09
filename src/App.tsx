@@ -18,6 +18,7 @@ import {
   ProjectsPage,
   ContactPage,
   ScrollView,
+  ScrollCue,
 } from "./components";
 import "./app.css";
 
@@ -33,14 +34,14 @@ const App = () => {
         {/* AboutPage has its own sections and scale effect - coding */}
         <AboutPage />
 
-        <ScrollView id="projects">
+        <ScrollView id="projects" threshold={0.05}>
           <ProjectsPage />
         </ScrollView>
 
-        <ScrollView id="contact">
-          <ContactPage />
-        </ScrollView>
+        {/* Contact footer - no ScrollView to avoid visibility loop */}
+        <ContactPage />
       </main>
+      <ScrollCue />
     </>
   );
 };

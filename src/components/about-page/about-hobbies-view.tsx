@@ -10,6 +10,7 @@
  * - Hover-reveal preview list showing specific examples
  * - 3D tilt effect and shine animation on hover
  */
+import { useAnimateOnView } from '../../hooks/use-animate-on-view';
 import './about-hobbies-view.css';
 
 interface Hobby {
@@ -71,8 +72,13 @@ const hobbies: Hobby[] = [
 ];
 
 const AboutHobbiesView = () => {
+  const [hobbiesRef, hobbiesAnimated] = useAnimateOnView({ threshold: 0.2 });
+
   return (
-    <div className="about-hobbies-view">
+    <div 
+      ref={hobbiesRef}
+      className={`about-hobbies-view ${hobbiesAnimated ? 'animate' : ''}`}
+    >
       <p className="view-label">Beyond The Code</p>
       <h1 className="view-title">Hobbies & Interests</h1>
       <p className="view-description">

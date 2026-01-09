@@ -24,10 +24,62 @@
     border-radius: 16px;
     padding: 30px 24px;
     text-align: center;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease, opacity 1s ease-out;
     transform-style: preserve-3d;
     position: relative;
     overflow: hidden;
+    /* Animation - triggered by .animate class on parent */
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+/* Staggered animation delays for hobby cards */
+.animate .hobby-card:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.animate .hobby-card:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.animate .hobby-card:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.animate .hobby-card:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.animate .hobby-card:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+}
+
+.animate .hobby-card:nth-child(6) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+.animate .hobby-card:nth-child(7) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.7s;
+}
+
+.animate .hobby-card:nth-child(8) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
 }
 
 .hobby-card:hover {
@@ -110,13 +162,13 @@
 .hobby-title {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--charcoal);
+    color: var(--pearl);
     margin-bottom: 8px;
 }
 
 .hobby-description {
     font-size: 0.9rem;
-    color: var(--charcoal);
+    color: var(--pearl);
     opacity: 0.8;
     line-height: 1.4;
 }

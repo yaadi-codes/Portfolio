@@ -9,14 +9,14 @@ import './about-page.css';
 
 // Images to preload for faster loading when sections become visible
 const PRELOAD_IMAGES = [
-  '/assets/images/github-pfp.png',
+  '/assets/images/github-pfp.webp',
 ];
 
 // Breakpoint for mobile threshold adjustment
 const MOBILE_BREAKPOINT = 768;
 
 /**
- * Hook to get responsive threshold values.
+ * Hook to get responsive threshold values and mobile detection.
  * Returns lower thresholds on mobile screens for better visibility.
  */
 function useResponsiveThresholds() {
@@ -33,12 +33,15 @@ function useResponsiveThresholds() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Return thresholds: {desktop, mobile} pairs
+  // Return both isMobile and thresholds
   return {
-    hero: isMobile ? 0.45 : 0.6,
-    skills: isMobile ? 0.75 : 0.53,
-    hobbies: isMobile ? 0.1 : 0.75,  // Much lower on mobile since content is tall
-    certifications: isMobile ? .5 : 0.578,
+    isMobile,
+    thresholds: {
+      hero: isMobile ? 0.45 : 0.6,
+      skills: isMobile ? 0.75 : 0.53,
+      hobbies: isMobile ? 0.1 : 0.6,
+      certifications: isMobile ? 0.5 : 0.49,
+    }
   };
 }
 
@@ -71,18 +74,8 @@ const AboutPage = () => {
     translateYMax: 150,
   });
 
-  const thresholds = useResponsiveThresholds();
-  
-  // Check if mobile for disabling scale effect
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== 'undefined' && window.innerWidth <= MOBILE_BREAKPOINT
-  );
-  
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= MOBILE_BREAKPOINT);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // Single source of truth for mobile detection and thresholds
+  const { isMobile, thresholds } = useResponsiveThresholds();
 
   // Preload images when component mounts (before sections are visible)
   useEffect(() => {

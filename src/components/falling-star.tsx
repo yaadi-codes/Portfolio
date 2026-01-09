@@ -10,6 +10,11 @@
  * 
  * Used as a decorative background element on the HomePage.
  * Has aria-hidden="true" for accessibility.
+ * 
+ * DESIGN DECISION: Uses direct DOM manipulation instead of React components
+ * for performance reasons. Creating many React components for each star would
+ * cause excessive re-renders and state management overhead. The imperative
+ * approach is intentional here for animation-heavy visual effects.
  */
 import { useEffect, useRef } from "react";
 import "./falling-star.css";

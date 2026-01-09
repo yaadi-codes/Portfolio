@@ -5,3 +5,4 @@ export { default as AboutPage } from './about-page';
 export { default as ProjectsPage } from './projects-page';
 export { default as ContactPage } from './contact-page';
 export { default as ScrollView } from './scroll-view';
+export { default as ScrollCue } from './scroll-cue/scroll-cue';
