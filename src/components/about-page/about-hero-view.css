@@ -296,7 +296,7 @@
     .about-hero-view {
         flex-direction: column-reverse;
         text-align: center;
-        padding: 40px 5%;
+        padding: 40px 5% 80px;
     }
 
     .hero-content {
@@ -352,7 +352,11 @@
 /* Mobile (<768px) */
 @media (max-width: 768px) {
     .about-hero-view {
-        padding: 30px 20px;
+        padding: 30px 20px 70px;
+    }
+
+    .hero-scroll-cue {
+        bottom: 10px;
     }
 
     .orbit-container {
