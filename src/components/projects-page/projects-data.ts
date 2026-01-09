@@ -44,16 +44,15 @@ export const PROJECTS: Project[] = [
         techStack: [
             { name: 'React', icon: '/assets/icons/react-2.svg' },
             { name: 'TypeScript', icon: '/assets/icons/typescript.svg' },
-            { name: 'Vite' },
-            { name: 'CSS3' },
+            { name: 'Vite', icon: '/assets/icons/vitejs.svg' },
+            { name: 'CSS3', icon: '/assets/icons/css-3.svg' },
         ],
         screenshots: [
-            '/assets/images/projects/portfolio-1.png',
-            '/assets/images/projects/portfolio-2.png',
+            '/assets/images/projects/Portfolio-HomePage.png',
         ],
         links: {
-            live: '#',
-            github: 'https://github.com/yaadi-codes',
+            live: 'https://portfolio-one-kohl-21.vercel.app/',
+            github: 'https://github.com/yaadi-codes/Portfolio',
         },
     },
     {
