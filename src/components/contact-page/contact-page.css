@@ -136,8 +136,10 @@
     box-shadow: 0 8px 25px rgba(65, 105, 225, 0.3);
 }
 
-.contact-link-emoji {
-    font-size: 1.2rem;
+.contact-link-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 /* Divider */

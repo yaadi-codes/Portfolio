@@ -26,6 +26,7 @@ export interface Project {
     techStack: TechItem[];
     screenshots: string[];      // Array of image paths (first is primary)
     links: ProjectLinks;
+    isClickable?: boolean;      // Whether project can be selected in carousel
 }
 
 /**
@@ -54,6 +55,7 @@ export const PROJECTS: Project[] = [
             live: 'https://portfolio-one-kohl-21.vercel.app/',
             github: 'https://github.com/yaadi-codes/Portfolio',
         },
+        isClickable: true,
     },
     {
         id: 'ecommerce',

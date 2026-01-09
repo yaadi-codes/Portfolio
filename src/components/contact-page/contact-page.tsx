@@ -21,6 +21,7 @@ const ContactPage = () => {
     <footer 
       ref={footerRef}
       className={`contact-footer ${footerAnimated ? 'animate' : ''}`}
+      id='contact'
     >
       <p className="footer-label">Let's Connect</p>
       
@@ -42,7 +43,7 @@ const ContactPage = () => {
           className="contact-link"
           title="Send me an email"
         >
-          <span className="contact-link-emoji">📧</span>
+          <img src="/assets/icons/official-gmail-icon-2020-.svg" alt="Email" className="contact-link-icon" />
           yaadicodes@gmail.com
         </a>
         
@@ -53,7 +54,7 @@ const ContactPage = () => {
           className="contact-link"
           title="Connect on LinkedIn"
         >
-          <span className="contact-link-emoji">💼</span>
+          <img src="/assets/icons/linkedin-icon-2.svg" alt="LinkedIn" className="contact-link-icon" />
           LinkedIn
         </a>
         
@@ -64,7 +65,7 @@ const ContactPage = () => {
           className="contact-link"
           title="View my GitHub"
         >
-          <span className="contact-link-emoji">💻</span>
+          <img src="/assets/icons/github-icon-1.svg" alt="GitHub" className="contact-link-icon" />
           GitHub
         </a>
         
@@ -75,7 +76,7 @@ const ContactPage = () => {
           className="contact-link"
           title="Follow on Instagram"
         >
-          <span className="contact-link-emoji">📸</span>
+          <img src="/assets/icons/instagram-2016-5.svg" alt="Instagram" className="contact-link-icon" />
           Instagram
         </a>
       </div>

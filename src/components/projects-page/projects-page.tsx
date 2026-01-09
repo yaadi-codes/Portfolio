@@ -10,13 +10,15 @@ import './projects-page.css';
 interface CarouselCardProps {
   project: Project;
   isSelected: boolean;
+  isClickable: boolean;
   onSelect: () => void;
 }
 
-const CarouselCard = ({ project, isSelected, onSelect }: CarouselCardProps) => (
+const CarouselCard = ({ project, isSelected, isClickable, onSelect }: CarouselCardProps) => (
   <button
-    className={`carousel-card ${isSelected ? 'selected' : ''}`}
-    onClick={onSelect}
+    className={`carousel-card ${isSelected ? 'selected' : ''} ${!isClickable ? 'disabled' : ''}`}
+    onClick={isClickable ? onSelect : undefined}
+    disabled={!isClickable}
   >
     <div className="card-thumbnail">
       {project.screenshots.length > 0 ? (
@@ -176,6 +178,7 @@ const ProjectsPage = () => {
                     key={`${project.id}-${index}`}
                     project={project}
                     isSelected={project.id === selectedId}
+                    isClickable={project.isClickable ?? false}
                     onSelect={() => handleSelectProject(project)}
                   />
                 ))}

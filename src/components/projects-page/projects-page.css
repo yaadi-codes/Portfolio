@@ -413,6 +413,19 @@
         0 8px 30px var(--blue-glow-medium);
 }
 
+/* Disabled state for non-clickable projects */
+.carousel-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.carousel-card.disabled:hover {
+    transform: none;
+    border-color: var(--glass-border);
+    box-shadow: none;
+}
+
 .card-thumbnail {
     height: 120px;
     background: linear-gradient(135deg, var(--darker-royal-blue) 0%, var(--blue-glow-medium) 100%);
