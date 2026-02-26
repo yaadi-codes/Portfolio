@@ -58,6 +58,28 @@ export const PROJECTS: Project[] = [
         isClickable: true,
     },
     {
+    id: 'tribute',
+    title: 'Anisa Web Tribute',
+    subtitle: 'A digital memorial',
+    description: 'A responsive tribute website created to honor and preserve the memory of Anisa Dilworth. Built with care and intention, the site features a timeline of her life, a digital tribute book for messages, and thoughtfully designed sections that celebrate her story. Designed to be accessible, emotionally resonant, and lasting — ensuring her memory lives on through the web.',
+    category: 'Web App',
+    techStack: [
+        { name: 'React', icon: '/assets/icons/react-2.svg' },
+        { name: 'TypeScript', icon: '/assets/icons/typescript.svg' },
+        { name: 'Vite', icon: '/assets/icons/vitejs.svg' },
+        { name: 'CSS3', icon: '/assets/icons/css-3.svg' },
+        { name: 'Firebase', icon: '/assets/icons/firebase.svg' },
+    ],
+    screenshots: [
+        '/assets/images/projects/AnisaTribute-HomePage.png',
+    ],
+    links: {
+        live: 'https://anisa-web-tribute.vercel.app/',
+        github: 'https://github.com/yaadi-codes/anisa-web-tribute',
+    },
+    isClickable: true,
+    },
+    {
         id: 'ecommerce',
         title: 'E-Commerce Platform',
         subtitle: 'Full-stack shopping experience',
