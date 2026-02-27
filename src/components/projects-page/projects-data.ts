@@ -79,7 +79,7 @@ export const PROJECTS: Project[] = [
     },
     isClickable: true,
     },
-    {
+   /*  {
         id: 'ecommerce',
         title: 'E-Commerce Platform',
         subtitle: 'Full-stack shopping experience',
@@ -167,7 +167,7 @@ export const PROJECTS: Project[] = [
         links: {
             github: '#',
         },
-    },
+    }, */
 ];
 
 export default PROJECTS;
