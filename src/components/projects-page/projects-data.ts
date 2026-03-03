@@ -88,9 +88,9 @@ export const PROJECTS: Project[] = [
         techStack: [
             { name: 'EJS Templates', icon: '/assets/icons/ejs-icon.svg' },
             { name: 'Node.js', icon: '/assets/icons/nodejs-icon.svg' },
-            { name: 'JavaScript', icon: '/assets/icons/javascript.svg' },
+            { name: 'JavaScript', icon: '/assets/icons/javascript-1.svg' },
             { name: 'CSS3', icon: '/assets/icons/css-3.svg' },
-            { name: 'MongoDB', icon: '/assets/icons/mongodb-icon.svg' },
+            { name: 'MongoDB', icon: '/assets/icons/mongodb-icon-2.svg' },
         ],
         screenshots: ['/assets/images/projects/TutYo.png'],
         links: {
