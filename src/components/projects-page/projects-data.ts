@@ -95,7 +95,9 @@ export const PROJECTS: Project[] = [
         screenshots: ['/assets/images/projects/TutYo.png'],
         links: {
             live: 'https://tut-yo.vercel.app/loginOrRegister',
+            github: 'https://github.com/yaadi-codes/TutYo',
         },
+        isClickable: true,
     },
     {
         id: '',
